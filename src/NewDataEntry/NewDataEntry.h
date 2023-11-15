@@ -3,14 +3,6 @@
 
 #include <string>
 #include <vector>
-<<<<<<< HEAD
-
-class NewDataEntry {
-public:
-  std::string fileName;
-  std::string Path;
-  std::vector<std::byte> data;
-=======
 #include <cstddef>
 
 class NewDataEntry {
@@ -28,6 +20,5 @@ public:
   std::string getPath();
 
   std::vector<std::byte> getData();
->>>>>>> 3a598bc559db649d651fdb09d126d9a3b1fc1d84
 };
 #endif
