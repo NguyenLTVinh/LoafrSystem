@@ -5,7 +5,7 @@
 #include <json/json.h> 
 
 
-class LogEntry {
+class Filter {
     public: 
     std::string timeStamp;
     std::string componentName;
@@ -20,3 +20,7 @@ class LogEntry {
 };
 
 #endif
+
+
+// an instance my filter to do filter stuff 
+
