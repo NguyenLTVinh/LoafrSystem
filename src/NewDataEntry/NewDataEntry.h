@@ -5,9 +5,19 @@
 #include <vector>
 
 class NewDataEntry {
-public:
+private:
   std::string fileName;
-  std::string Path;
+  std::string path;
   std::vector<std::byte> data;
+
+public:
+  NewDataEntry(std::string fileName, std::string path,
+               std::vector<std::byte> data);
+
+  std::string getFileName();
+
+  std::string getPath();
+
+  std::vector<std::byte> getData();
 };
 #endif
