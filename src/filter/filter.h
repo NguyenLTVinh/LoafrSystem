@@ -22,3 +22,7 @@ class Filter {
     Filter(const vector<std::string>& logEntries, const std::string&, const std::string& operator, const int val);
 
 #endif
+
+
+// an instance my filter to do filter stuff 
+
