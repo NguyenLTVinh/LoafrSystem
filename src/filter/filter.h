@@ -19,7 +19,8 @@ class Filter {
     Filter(const std::string& time, const std::string& comp, const std::string& event,
              const std::string& field, int value);
 };
-    Filter(const vector<std::string>& logEntries, const std::string&, const std::string& operator, const int val);
+
+    std::vector<std::string> FilterLog(const vector<std::string>& logEntries, const std::string& logItem, const std::string& operator, const int val);
 
 #endif
 
