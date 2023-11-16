@@ -3,22 +3,19 @@
 
 #include <string>
 #include <vector>
-#include <cstddef>
 
 class NewDataEntry {
 private:
-  std::string fileName;
-  std::string path;
-  std::vector<std::byte> data;
+    std::string fileName;
+    std::string path;
+    std::vector<std::string> data;
 
 public:
-  NewDataEntry(std::string fileName, std::string path,
-               std::vector<std::byte> data);
-
-  std::string getFileName();
-
-  std::string getPath();
-
-  std::vector<std::byte> getData();
+    NewDataEntry(const std::string& fileName, const std::string& path);
+    void loadData();
+    const std::string& getFileName() const;
+    const std::string& getPath() const;
+    const std::vector<std::string>& getData() const;
 };
-#endif
+
+#endif // NEWDATAENTRY_H

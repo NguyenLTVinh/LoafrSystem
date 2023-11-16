@@ -2,40 +2,15 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <filesystem>
 #include <nlohmann/json.hpp>
 
 LoafrModel::LoafrModel() {
-    filter = new Filter();
-    search = new Search();
+    filter = std::make_unique<Filter>();
+    search = std::make_unique<Search>();
 }
 
-LoafrModel::~LoafrModel() {
-    delete filter;
-    delete search;
-}
-
-void LoafrModel::loadLogFile(const std::string& filePath, const std::string& fileName) {
-    //std::string fullPath = filePath + "/" + fileName;
-    std::string fullPath = fileName;
-    std::ifstream file(fullPath);
-    std::string line;
-
-    if (file.is_open()) {
-        std::cout << "Loaded " << fullPath << std::endl;
-        while (getline(file, line)) {
-            logEntries.push_back(line);
-        }
-        file.close();
-    } else {
-        std::cerr << "Unable to open file: " << fullPath << std::endl;
-    }
-}
-
-const std::vector<std::string>& LoafrModel::getLogEntries() const {
-    return logEntries;
-}
-
-void LoafrModel::saveLogEntriesAsJson(const std::vector<std::string>& logEntries, const std::string& path) {
+void LoafrModel::saveLogEntriesAsJson(const std::vector<std::string>& logEntries, const std::string& path, const std::string& baseFileName) {
     nlohmann::json jsonArray;
 
     for (const auto& entry : logEntries) {
@@ -64,9 +39,15 @@ void LoafrModel::saveLogEntriesAsJson(const std::vector<std::string>& logEntries
 
         jsonArray.push_back(jsonObj);
     }
-    // TODO: come up with naming convention for this.
-    std::string outputPath = path;
-    outputPath += "/filtered_output.json";
+
+    std::string baseOutputFileName = baseFileName.substr(0, baseFileName.find_last_of('.')) + "-out";
+    std::string outputFileName = baseOutputFileName + ".json";
+    std::string outputPath = path.empty() ? outputFileName : path + "/" + outputFileName;
+    int index = 1;
+    while (std::filesystem::exists(outputPath)) {
+        outputFileName = baseOutputFileName + "-" + std::to_string(index++) + ".json";
+        outputPath = path.empty() ? outputFileName : path + "/" + outputFileName;
+    }
     std::ofstream outFile(outputPath);
     if (outFile.is_open()) {
         outFile << jsonArray.dump(4);
@@ -76,21 +57,21 @@ void LoafrModel::saveLogEntriesAsJson(const std::vector<std::string>& logEntries
     }
 }
 
-void LoafrModel::SaveFilterLog(const std::vector<std::string>& logEntries, 
-                                       const std::string& logItem, 
-                                       const std::string& operation, 
-                                       const int val, const std::string& path) {
+void LoafrModel::SaveFilterLog(const NewDataEntry& newDataEntry, 
+                                const std::string& logItem, 
+                                const std::string& operation, 
+                                const int val, const std::string& path) {
     std::vector<std::string> matchedEntries;
     if (filter) {
-        matchedEntries =  filter->FilterLog(logEntries, logItem, operation, val);
+        matchedEntries =  filter->FilterLog(newDataEntry.getData(), logItem, operation, val);
     }
-    saveLogEntriesAsJson(matchedEntries, path);
+    saveLogEntriesAsJson(matchedEntries, path, newDataEntry.getFileName());
 }
 
-void LoafrModel::SaveSearchKeyword(const std::string& keyword, const std::vector<std::string>& logEntries, const std::string& path) {
+void LoafrModel::SaveSearchKeyword(const std::string& keyword, const NewDataEntry& newDataEntry, const std::string& path) {
     std::vector<std::string> matchedEntries;
     if (search) {
-        matchedEntries =  search->searchKeyword(keyword, logEntries);
+        matchedEntries =  search->searchKeyword(keyword, newDataEntry.getData());
     }
-    saveLogEntriesAsJson(matchedEntries, path);
+    saveLogEntriesAsJson(matchedEntries, path, newDataEntry.getFileName());
 }

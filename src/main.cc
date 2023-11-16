@@ -3,8 +3,20 @@
 #include <string>
 #include <sstream>
 
+void splitPath(const std::string& fullPath, std::string& dirPath, std::string& fileName) {
+    size_t pos = fullPath.find_last_of("/\\");
+    if (pos != std::string::npos) {
+        dirPath = fullPath.substr(0, pos);
+        fileName = fullPath.substr(pos + 1);
+    } else {
+        dirPath = ".";
+        fileName = fullPath;
+    }
+}
+
 int main() {
     LoafrModel model;
+    std::unique_ptr<NewDataEntry> logData;
     std::string outputFolderPath = "./"; // Default output folder is current folder
     bool loadCalled = false;
 
@@ -43,11 +55,12 @@ int main() {
         std::istringstream iss(line);
         std::string command;
         iss >> command;
-
+        // TODO: make changes to accomodate loading just a path.
         if (command == "load") {
-            std::string logFilePath;
+            std::string logFilePath, path, fileName;
             iss >> logFilePath;
-            model.loadLogFile("", logFilePath);
+            splitPath(logFilePath, path, fileName);
+            logData = std::make_unique<NewDataEntry>(fileName, path);
             loadCalled = true;
         } 
         else if (command == "out") {
@@ -62,7 +75,7 @@ int main() {
                 int value;
                 iss >> field >> compare >> valueStr;
                 value = std::stoi(valueStr);
-                model.SaveFilterLog(model.getLogEntries(), field, compare, value, outputFolderPath);
+                model.SaveFilterLog(*logData, field, compare, value, outputFolderPath);
             } else {
                 std::cout << "No Log Files Loaded" << std::endl;
             }
@@ -75,8 +88,7 @@ int main() {
                 if (!keyword.empty() && keyword.front() == ' ') {
                     keyword.erase(0, 1);
                 }
-                std::cout << "Searching for: " << keyword << std::endl;
-                model.SaveSearchKeyword(keyword, model.getLogEntries(), outputFolderPath);
+                model.SaveSearchKeyword(keyword, *logData, outputFolderPath);
             } else {
                 std::cout << "No Log Files Loaded" << std::endl;
             }

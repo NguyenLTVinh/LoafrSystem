@@ -19,7 +19,6 @@ std::vector<std::string> Filter::FilterLog(const std::vector<std::string>& logEn
                                            const std::string& operation, 
                                            const int val) {
     std::vector<std::string> matchedEntries;
-
     for (const auto& entry : logEntries) {
         std::istringstream iss(entry);
         std::vector<std::string> entryItems;
@@ -30,14 +29,17 @@ std::vector<std::string> Filter::FilterLog(const std::vector<std::string>& logEn
         }
 
         if (!entryItems.empty()) {
-            int logItemInteger = std::stoi(entryItems.back());
-            if ((operation == "<" && val > logItemInteger) ||
-                (operation == "=" && val == logItemInteger) ||
-                (operation == ">" && val < logItemInteger)) {
-                matchedEntries.push_back(entry);
+            try {
+                int logItemInteger = std::stoi(entryItems.back());
+                if ((operation == "<" && val > logItemInteger) ||
+                    (operation == "=" && val == logItemInteger) ||
+                    (operation == ">" && val < logItemInteger)) {
+                    matchedEntries.push_back(entry);
+                }
+            } catch (std::invalid_argument& e) {
+                std::cerr << "Non-integer value in Data Value field.\n";
             }
         }
     }
-
     return matchedEntries;
 }
