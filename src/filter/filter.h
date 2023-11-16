@@ -2,28 +2,26 @@
 #define FILTER_H
 
 #include <string>
-#include <json/json.h> 
 #include <vector>
 
-
 class Filter {
-    public: 
+private: 
     std::string timeStamp;
     std::string componentName;
     std::string eventType;
     std::string dataFieldName;
     int dataValue;
 
-
-    // Constructor for convenience
+public:
+    Filter();
+    
     Filter(const std::string& time, const std::string& comp, const std::string& event,
-             const std::string& field, int value);
+           const std::string& field, int value);
+
+    std::vector<std::string> FilterLog(const std::vector<std::string>& logEntries, 
+                                       const std::string& logItem, 
+                                       const std::string& operation, 
+                                       const int val);
 };
 
-    std::vector<std::string> FilterLog(const vector<std::string>& logEntries, const std::string& logItem, const std::string& operator, const int val);
-
 #endif
-
-
-// an instance my filter to do filter stuff 
-

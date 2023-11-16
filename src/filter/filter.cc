@@ -1,50 +1,43 @@
-#include "logentry.h"
+#include "Filter.h"
+#include <string>
+#include <vector>
+#include <sstream>
+#include <iostream>
 
-// Implementation of the LogEntry constructor
+Filter::Filter() {}
+
 Filter::Filter(const std::string& time, const std::string& comp, const std::string& event,
-                   const std::string& field, int value)
+               const std::string& field, int value)
     : timeStamp(time),
       componentName(comp),
       eventType(event),
       dataFieldName(field),
       dataValue(value) {}
 
+std::vector<std::string> Filter::FilterLog(const std::vector<std::string>& logEntries, 
+                                           const std::string& logItem, 
+                                           const std::string& operation, 
+                                           const int val) {
+    std::vector<std::string> matchedEntries;
 
-Filter::FilterLog(const vector<std::string>& logEntries, const std::string& logItem, const std::string& operator, const int val){
+    for (const auto& entry : logEntries) {
+        std::istringstream iss(entry);
+        std::vector<std::string> entryItems;
+        std::string item;
 
-  std::vector<std::string> matchedEntries;
+        while (std::getline(iss, item, ',')) {
+            entryItems.push_back(item);
+        }
 
-  for (const auto& entry : logEntries) {
-    // Need to check
-      std::vector<std::string> entryItems;
-      char *token = strtok(entry, ",")
-      while (token != NULL){
-        entryItems.push_back(entryItems);
-        token = strtok(NULL, ",")
-      }
-
-      int logItemInteger = stoi(entryItems.back());
-      if (entry.find(logItem) != std::string::npos) {
-          if (operator == "<"){
-              if (val < logItemInteger){
+        if (!entryItems.empty()) {
+            int logItemInteger = std::stoi(entryItems.back());
+            if ((operation == "<" && val > logItemInteger) ||
+                (operation == "=" && val == logItemInteger) ||
+                (operation == ">" && val < logItemInteger)) {
                 matchedEntries.push_back(entry);
-              }
-          }
-          if (operator == "="){
-              if (val == logItemInteger){
-                matchedEntries.push_back(entry);
-              }
-          }
-          if (operator == ">") {
-              if (val > logItemInteger){
-                matchedEntries.push_back(entry);
-              }
-          }
-          // May need to add more cases, ">=", "<="
-          else {
-            return "error";
-          }
+            }
         }
     }
+
     return matchedEntries;
 }
