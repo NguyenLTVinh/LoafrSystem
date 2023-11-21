@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
-#include <nlohmann/json.hpp>
+#include "nlohmann/json.hpp"
 #include <sstream>
 
 LoafrModel::LoafrModel() {
