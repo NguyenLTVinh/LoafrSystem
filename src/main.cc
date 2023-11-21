@@ -2,10 +2,10 @@
 #include <sstream>
 #include <string>
 
-#include "Model/LoafrModel.h"
+#include "model/LoafrModel.h"
 
-void splitPath(const std::string& fullPath, std::string& dirPath,
-               std::string& fileName) {
+void splitPath(const std::string &fullPath, std::string &dirPath,
+               std::string &fileName) {
   size_t pos = fullPath.find_last_of("/\\");
   if (pos != std::string::npos) {
     dirPath = fullPath.substr(0, pos);
@@ -20,7 +20,7 @@ int main() {
   LoafrModel model;
   std::unique_ptr<NewDataEntry> logData;
   std::string outputFolderPath =
-      "./";  // Default output folder is current folder
+      "./"; // Default output folder is current folder
   bool loadCalled = false;
 
   std::cout << "Loafr Command Line Interface\n";
@@ -83,8 +83,16 @@ int main() {
         std::string field, compare, valueStr;
         int value;
         iss >> field >> compare >> valueStr;
-        value = std::stoi(valueStr);
-        model.SaveFilterLog(*logData, field, compare, value, outputFolderPath);
+        try {
+          value = std::stoi(valueStr);
+          model.SaveFilterLog(*logData, field, compare, value,
+                              outputFolderPath);
+        } catch (std::invalid_argument) {
+          std::cout << "Error Invalid Argument: Make sure to pass in a opeator "
+                       "and a number to filter "
+                       "by, otherwise use search"
+                    << std::endl;
+        }
       } else {
         std::cout << "No Log Files Loaded\n" << std::endl;
       }
