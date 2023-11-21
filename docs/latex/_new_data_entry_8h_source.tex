@@ -1,0 +1,27 @@
+\doxysection{New\+Data\+Entry.\+h}
+\hypertarget{_new_data_entry_8h_source}{}\label{_new_data_entry_8h_source}\index{/Users/joeylangevin/Desktop/5801/P4/LoafrSystem/src/NewDataEntry/NewDataEntry.h@{/Users/joeylangevin/Desktop/5801/P4/LoafrSystem/src/NewDataEntry/NewDataEntry.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ NEWDATAENTRY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ NEWDATAENTRY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_new_data_entry}{NewDataEntry}}\ \{}
+\DoxyCodeLine{00008\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ std::string\ fileName;}
+\DoxyCodeLine{00010\ \ \ std::string\ path;}
+\DoxyCodeLine{00011\ \ \ std::vector<std::string>\ data;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \mbox{\hyperlink{class_new_data_entry}{NewDataEntry}}(\textcolor{keyword}{const}\ std::string\&\ fileName,\ \textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{void}\ loadData();}
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{const}\ std::string\&\ getFileName()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \textcolor{keyword}{const}\ std::string\&\ getPath()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ getData()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ NEWDATAENTRY\_H}}
+
+\end{DoxyCode}
