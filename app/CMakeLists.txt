@@ -27,7 +27,7 @@ add_executable(loafr main.cc src/LoafrModel.cc src/NewDataEntry.cc src/Search.cc
 
 #Adding header files
 target_include_directories(loafr PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
+target_link_libraries(loafr PRIVATE nlohmann_json::nlohmann_json)
 # Testing
 enable_testing()
 
