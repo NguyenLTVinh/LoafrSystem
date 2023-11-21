@@ -87,9 +87,9 @@ void LoafrModel::SaveSearchKeyword(const std::string& keyword,
 void LoafrModel::sortFileByTimestamp(const std::string& sortType,
                                      const NewDataEntry& newDataEntry,
                                      const std::string& path) {
-  std::vector<std::string> matchedEntries;
+  std::vector<std::string> matchedEntries = newDataEntry.getData();
   if (sort) {
-    sortedEntries = sort->sortFile(sortType, newDataEntry.getData());
+    matchedEntries = sort->sortFile(sortType, matchedEntries);
   }
-  saveLogEntriesAsJson(sortedEntries, path, newDataEntry.getFileName());
+  saveLogEntriesAsJson(matchedEntries, path, newDataEntry.getFileName());
 }

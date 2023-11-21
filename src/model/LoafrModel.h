@@ -12,6 +12,7 @@ class LoafrModel {
  private:
   std::unique_ptr<Filter> filter;
   std::unique_ptr<Search> search;
+  std::unique_ptr<Sort> sort;
 
  public:
   LoafrModel();
@@ -25,6 +26,9 @@ class LoafrModel {
   void SaveSearchKeyword(const std::string& keyword,
                          const NewDataEntry& newDataEntry,
                          const std::string& path);
+  void sortFileByTimestamp(const std::string& sortType,
+                           const NewDataEntry& newDataEntry,
+                           const std::string& path);
 };
 
 #endif  // LOAFRMODEL_H

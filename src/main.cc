@@ -47,9 +47,8 @@ int main() {
   std::cout << "   - Example: search insulin pump\n\n";
 
   std::cout << "5. Sort keyword\n";
-  std::cout
-      << "   - Sorts for log entries containing based on ascending or descending order.\n";
-
+  std::cout << "   - Sorts for log entries containing based on ascending or "
+               "descending order.\n";
 
   std::cout << "Type 'quit' to exit the program.\n";
   std::cout << "============================\n";
@@ -87,7 +86,7 @@ int main() {
         value = std::stoi(valueStr);
         model.SaveFilterLog(*logData, field, compare, value, outputFolderPath);
       } else {
-        std::cout << "No Log Files Loaded" << std::endl;
+        std::cout << "No Log Files Loaded\n" << std::endl;
       }
 
     } else if (command == "search") {
@@ -98,17 +97,21 @@ int main() {
           keyword.erase(0, 1);
         }
         model.SaveSearchKeyword(keyword, *logData, outputFolderPath);
-      } else if (command == "sort") {
-        if (loadCalled) {
-          std::string order;
-          iss >> order;
-
-            model.sortFileByTimestamp(sortType, *logData, outputFolderPath);
-    
-        }
+      } else {
+        std::cout << "No Log Files Loaded\n" << std::endl;
       }
-      else {
-        std::cout << "No Log Files Loaded" << std::endl;
+    } else if (command == "sort") {
+      if (loadCalled) {
+        std::string sortOrder;
+        iss >> sortOrder;
+        if (sortOrder == "ascending" || sortOrder == "descending") {
+          model.sortFileByTimestamp(sortOrder, *logData, outputFolderPath);
+        } else {
+          std::cerr << "Invalid sort order. Please use 'ascending' or "
+                       "'descending'.\n";
+        }
+      } else {
+        std::cerr << "No Log Files Loaded\n";
       }
     } else {
       std::cerr << "Invalid command or insufficient arguments.\n";

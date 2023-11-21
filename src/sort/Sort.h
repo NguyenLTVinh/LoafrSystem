@@ -9,7 +9,7 @@ private:
 
 public:
     Sort();
-    const std::vector<std::string>& sortFile(const std::string& sortType,std::vector<std::string>& fileContents) ;
+    std::vector<std::string> sortFile(const std::string& sortType, std::vector<std::string>& fileContents) ;
     
 };
 
