@@ -15,6 +15,13 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+# Include nlohmann/json
+FetchContent_Declare(
+  json
+  URL https://github.com/nlohmann/json/releases/download/v3.10.4/json.tar.xz
+)
+FetchContent_MakeAvailable(json)
+
 # Adding main.cc and other source files
 add_executable(loafr main.cc src/LoafrModel.cc src/NewDataEntry.cc src/Search.cc src/Sort.cc src/filter.cc)
 

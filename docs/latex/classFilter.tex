@@ -1,17 +1,52 @@
 \hypertarget{classFilter}{}\doxysection{Filter Class Reference}
 \label{classFilter}\index{Filter@{Filter}}
+
+
+A class that provided the ability to filter certain log\+Items from a logfile The filter class allows a user to input a keyword to match against as well as an integer to compare against the integers in the inputted logfiles. Only the log\+Entries that contain both the keyword and satisfy the operation will be returned.  
+
+
+
+
+{\ttfamily \#include $<$filter.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classFilter_ae325386108a2586224c418653d3f97d3}\label{classFilter_ae325386108a2586224c418653d3f97d3}} 
-{\bfseries Filter} (const std\+::string \&time, const std\+::string \&comp, const std\+::string \&event, const std\+::string \&field, int value)
-\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classFilter_acadc1d7035e08fbdbf1d14af9269aacb}{Filter\+Log}} (const std\+::vector$<$ std\+::string $>$ \&log\+Entries, const std\+::string \&log\+Item, const std\+::string \&operation, const int val)
+\begin{DoxyCompactList}\small\item\em Filters the logitems by taking in a specifed log\+Item keyword and an operator to compare the log\+Item value to the given val in the parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that provided the ability to filter certain log\+Items from a logfile The filter class allows a user to input a keyword to match against as well as an integer to compare against the integers in the inputted logfiles. Only the log\+Entries that contain both the keyword and satisfy the operation will be returned. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classFilter_acadc1d7035e08fbdbf1d14af9269aacb}\label{classFilter_acadc1d7035e08fbdbf1d14af9269aacb}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries Filter\+Log} (const std\+::vector$<$ std\+::string $>$ \&log\+Entries, const std\+::string \&log\+Item, const std\+::string \&operation, const int val)
-\end{DoxyCompactItemize}
+\index{Filter@{Filter}!FilterLog@{FilterLog}}
+\index{FilterLog@{FilterLog}!Filter@{Filter}}
+\doxysubsubsection{\texorpdfstring{FilterLog()}{FilterLog()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Filter\+::\+Filter\+Log (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{log\+Entries,  }\item[{const std\+::string \&}]{log\+Item,  }\item[{const std\+::string \&}]{operation,  }\item[{const int}]{val }\end{DoxyParamCaption})}
+
+
+
+Filters the logitems by taking in a specifed log\+Item keyword and an operator to compare the log\+Item value to the given val in the parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Entries} & A vector of strings representing all the entries in a logfile \\
+\hline
+{\em log\+Item} & A string keyword that the filtered log\+Entries must all contain \\
+\hline
+{\em operation} & A string operator, (i.\+e. \textquotesingle{}$>$\textquotesingle{}, \textquotesingle{}$<$\textquotesingle{}, or \textquotesingle{}=\textquotesingle{}) to compare val and the log\+Entry values \\
+\hline
+{\em val} & An int Value that will be compared against the log\+Entry values \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of strings representing all the filtered log\+Items 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/src/filter/filter.\+h\item 
-/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/src/filter/filter.\+cc\end{DoxyCompactItemize}
+/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/app/include/filter.\+h\item 
+/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/app/src/filter.\+cc\end{DoxyCompactItemize}
