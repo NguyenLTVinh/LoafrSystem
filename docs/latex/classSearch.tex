@@ -1,0 +1,52 @@
+\hypertarget{classSearch}{}\doxysection{Search Class Reference}
+\label{classSearch}\index{Search@{Search}}
+
+
+A class that provides functionality to search for a specific keyword in log entries.  
+
+
+
+
+{\ttfamily \#include $<$Search.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classSearch_af4fd79ed7865658691e6d81d78c376f6}{search\+Keyword}} (const std\+::string \&keyword, const std\+::vector$<$ std\+::string $>$ \&log\+Entries)
+\begin{DoxyCompactList}\small\item\em Searches for a keyword in a collection of log entries. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class that provides functionality to search for a specific keyword in log entries. 
+
+The \mbox{\hyperlink{classSearch}{Search}} class offers a method to filter log entries based on the presence of a specified keyword, returning all entries that contain this keyword. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSearch_af4fd79ed7865658691e6d81d78c376f6}\label{classSearch_af4fd79ed7865658691e6d81d78c376f6}} 
+\index{Search@{Search}!searchKeyword@{searchKeyword}}
+\index{searchKeyword@{searchKeyword}!Search@{Search}}
+\doxysubsubsection{\texorpdfstring{searchKeyword()}{searchKeyword()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Search\+::search\+Keyword (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{keyword,  }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{log\+Entries }\end{DoxyParamCaption})}
+
+
+
+Searches for a keyword in a collection of log entries. 
+
+Iterates through log entries and selects those that contain the specified keyword.
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & The keyword to search for in the log entries. \\
+\hline
+{\em log\+Entries} & A vector of strings representing the log entries to be searched. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of strings containing log entries that match the keyword. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/src/search/\mbox{\hyperlink{Search_8h}{Search.\+h}}\item 
+/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/src/search/Search.\+cc\end{DoxyCompactItemize}

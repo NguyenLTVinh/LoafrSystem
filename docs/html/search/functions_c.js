@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['normalize_0',['normalize',['../structdetail_1_1dtoa__impl_1_1diyfp.html#a5bad735c2cb50b194938a8a89b82f6ed',1,'detail::dtoa_impl::diyfp']]],
-  ['normalize_5fto_1',['normalize_to',['../structdetail_1_1dtoa__impl_1_1diyfp.html#a5a9ce83c6c1663c9aaac7ffd9009b971',1,'detail::dtoa_impl::diyfp']]],
-  ['null_2',['null',['../structjson__sax.html#acbcc09c0ada2782cd73cc4135823181d',1,'json_sax']]],
-  ['number_5ffloat_3',['number_float',['../structjson__sax.html#a19eafa3a92fc75e0258a842283396aa9',1,'json_sax']]],
-  ['number_5finteger_4',['number_integer',['../structjson__sax.html#a46cc306b7677553d8f6bd8c9592eb1bd',1,'json_sax']]],
-  ['number_5funsigned_5',['number_unsigned',['../structjson__sax.html#a32f8a32794cb384f0de3d3a96a6bb696',1,'json_sax']]]
+  ['merge_5fpatch_670',['merge_patch',['../classbasic__json.html#a8676ac2433fe299b8d420f00a0741395',1,'basic_json']]],
+  ['meta_671',['meta',['../classbasic__json.html#a7b435c2ed2db99cb1daa78ae3c6c4580',1,'basic_json']]],
+  ['mul_672',['mul',['../structdetail_1_1dtoa__impl_1_1diyfp.html#a046c61f2c13411677eedfb5b9b7a8226',1,'detail::dtoa_impl::diyfp']]]
 ];

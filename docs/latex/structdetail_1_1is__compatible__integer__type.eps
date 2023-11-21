@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 111.940300
+%%BoundingBox: 0 0 500 111.940299
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -175,7 +175,7 @@ boxfont setfont
 1 boundaspect scale
 (detail::is_compatible_integer_type< RealIntegerType, CompatibleNumberIntegerType >) cw
 (detail::is_compatible_integer_type_impl< RealIntegerType, CompatibleNumberIntegerType >) cw
-(std::false_type) cw
+(false_type) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
 /yspacing boxheight disty add def
@@ -189,7 +189,7 @@ boundx scalefactor div boundy scalefactor div scale
 
  (detail::is_compatible_integer_type< RealIntegerType, CompatibleNumberIntegerType >) 0.000000 0.000000 box
  (detail::is_compatible_integer_type_impl< RealIntegerType, CompatibleNumberIntegerType >) 0.000000 1.000000 box
- (std::false_type) 0.000000 2.000000 box
+ (false_type) 0.000000 2.000000 box
 
 % ----- relations -----
 

@@ -1,0 +1,122 @@
+\hypertarget{classLoafrModel}{}\doxysection{Loafr\+Model Class Reference}
+\label{classLoafrModel}\index{LoafrModel@{LoafrModel}}
+
+
+A model class that encapsulates filtering, searching, and sorting functionalities for log entries.  
+
+
+
+
+{\ttfamily \#include $<$Loafr\+Model.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLoafrModel_ae045969f74791d1875faf71b45336c90}\label{classLoafrModel_ae045969f74791d1875faf71b45336c90}} 
+\mbox{\hyperlink{classLoafrModel_ae045969f74791d1875faf71b45336c90}{Loafr\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{classLoafrModel}{Loafr\+Model}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLoafrModel_a49cb02efe1349cbbfb33999a70f1258a}\label{classLoafrModel_a49cb02efe1349cbbfb33999a70f1258a}} 
+\mbox{\hyperlink{classLoafrModel_a49cb02efe1349cbbfb33999a70f1258a}{$\sim$\+Loafr\+Model}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoafrModel_a633935a04d97ecca70921ae8db44881a}{save\+Log\+Entries\+As\+Json}} (const std\+::vector$<$ std\+::string $>$ \&log\+Entries, const std\+::string \&path, const std\+::string \&base\+File\+Name)
+\begin{DoxyCompactList}\small\item\em Saves log entries as a J\+S\+ON file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoafrModel_af553410da03655c3e9bcb59947335755}{Save\+Filter\+Log}} (const \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} \&new\+Data\+Entry, const std\+::string \&log\+Item, const std\+::string \&operation, const int val, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Filters log entries based on specified criteria and saves the results as J\+S\+ON. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoafrModel_ace49e34132afb90c8ead6301984a9c73}{Save\+Search\+Keyword}} (const std\+::string \&keyword, const \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} \&new\+Data\+Entry, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Searches for a keyword in log entries and saves the results as J\+S\+ON. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoafrModel_a839d162115167a71eb2e58bf43c3a24c}{sort\+File\+By\+Timestamp}} (const std\+::string \&sort\+Type, const \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} \&new\+Data\+Entry, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Sorts log entries by timestamp and saves them as J\+S\+ON. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A model class that encapsulates filtering, searching, and sorting functionalities for log entries. 
+
+This class uses unique pointers to manage \mbox{\hyperlink{classFilter}{Filter}}, \mbox{\hyperlink{classSearch}{Search}}, and \mbox{\hyperlink{classSort}{Sort}} objects, providing a unified interface for processing log file entries. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLoafrModel_af553410da03655c3e9bcb59947335755}\label{classLoafrModel_af553410da03655c3e9bcb59947335755}} 
+\index{LoafrModel@{LoafrModel}!SaveFilterLog@{SaveFilterLog}}
+\index{SaveFilterLog@{SaveFilterLog}!LoafrModel@{LoafrModel}}
+\doxysubsubsection{\texorpdfstring{SaveFilterLog()}{SaveFilterLog()}}
+{\footnotesize\ttfamily void Loafr\+Model\+::\+Save\+Filter\+Log (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} \&}]{new\+Data\+Entry,  }\item[{const std\+::string \&}]{log\+Item,  }\item[{const std\+::string \&}]{operation,  }\item[{const int}]{val,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Filters log entries based on specified criteria and saves the results as J\+S\+ON. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Data\+Entry} & The \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} object containing log entries. \\
+\hline
+{\em log\+Item} & The field name to filter on. \\
+\hline
+{\em operation} & The comparison operation (\char`\"{}$<$\char`\"{}, \char`\"{}=\char`\"{}, \char`\"{}$>$\char`\"{}). \\
+\hline
+{\em val} & The value to compare against. \\
+\hline
+{\em path} & The directory path where the filtered J\+S\+ON file will be saved. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLoafrModel_a633935a04d97ecca70921ae8db44881a}\label{classLoafrModel_a633935a04d97ecca70921ae8db44881a}} 
+\index{LoafrModel@{LoafrModel}!saveLogEntriesAsJson@{saveLogEntriesAsJson}}
+\index{saveLogEntriesAsJson@{saveLogEntriesAsJson}!LoafrModel@{LoafrModel}}
+\doxysubsubsection{\texorpdfstring{saveLogEntriesAsJson()}{saveLogEntriesAsJson()}}
+{\footnotesize\ttfamily void Loafr\+Model\+::save\+Log\+Entries\+As\+Json (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{log\+Entries,  }\item[{const std\+::string \&}]{path,  }\item[{const std\+::string \&}]{base\+File\+Name }\end{DoxyParamCaption})}
+
+
+
+Saves log entries as a J\+S\+ON file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Entries} & A vector of string containing log entries to be saved. \\
+\hline
+{\em path} & The directory path where the J\+S\+ON file will be saved. \\
+\hline
+{\em base\+File\+Name} & The base name of the file used to create the output file name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLoafrModel_ace49e34132afb90c8ead6301984a9c73}\label{classLoafrModel_ace49e34132afb90c8ead6301984a9c73}} 
+\index{LoafrModel@{LoafrModel}!SaveSearchKeyword@{SaveSearchKeyword}}
+\index{SaveSearchKeyword@{SaveSearchKeyword}!LoafrModel@{LoafrModel}}
+\doxysubsubsection{\texorpdfstring{SaveSearchKeyword()}{SaveSearchKeyword()}}
+{\footnotesize\ttfamily void Loafr\+Model\+::\+Save\+Search\+Keyword (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{keyword,  }\item[{const \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} \&}]{new\+Data\+Entry,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Searches for a keyword in log entries and saves the results as J\+S\+ON. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keyword} & The keyword to search for. \\
+\hline
+{\em new\+Data\+Entry} & The \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} object containing log entries. \\
+\hline
+{\em path} & The directory path where the search results J\+S\+ON file will be saved. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classLoafrModel_a839d162115167a71eb2e58bf43c3a24c}\label{classLoafrModel_a839d162115167a71eb2e58bf43c3a24c}} 
+\index{LoafrModel@{LoafrModel}!sortFileByTimestamp@{sortFileByTimestamp}}
+\index{sortFileByTimestamp@{sortFileByTimestamp}!LoafrModel@{LoafrModel}}
+\doxysubsubsection{\texorpdfstring{sortFileByTimestamp()}{sortFileByTimestamp()}}
+{\footnotesize\ttfamily void Loafr\+Model\+::sort\+File\+By\+Timestamp (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sort\+Type,  }\item[{const \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} \&}]{new\+Data\+Entry,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Sorts log entries by timestamp and saves them as J\+S\+ON. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sort\+Type} & The type of sorting (\char`\"{}ascending\char`\"{} or \char`\"{}descending\char`\"{}). \\
+\hline
+{\em new\+Data\+Entry} & The \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} object containing log entries. \\
+\hline
+{\em path} & The directory path where the sorted J\+S\+ON file will be saved. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/src/model/\mbox{\hyperlink{LoafrModel_8h}{Loafr\+Model.\+h}}\item 
+/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/src/model/Loafr\+Model.\+cc\end{DoxyCompactItemize}
