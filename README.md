@@ -1,17 +1,17 @@
 # LoafrSystem Version 0.1
 
-### #### Overview 
+### Overview 
 This document provides instructions on building, executing, and testing the Loafr system, version 0.1. The Loafr system is designed to read log files, execute analyses, and produce output based on user-defined search, sort, and filter criteria.
 
 ## Table of Contents 
 
 1. Getting Started
-- Prerequisites
+    - Prerequisites
 2. Executing the Program
-- Command Line Interface
-- Example Usage
+    - Command Line Interface
+    - Example Usage
 3. Unit Tests
-- Running Unit Tests
+    - Running Unit Tests
 
 
 ### Getting Started
@@ -20,7 +20,7 @@ Before utilizing the Loafr System, ensure that you have the following prerequisi
 - C++ compiler
 - CMake
 - Nlohmann JSON Library: A C++ library for working with JSON data.  
-    - To install the Nlohmann, follow the instruciton in the [official repository.](https://github.com/nlohmann/json)
+    - To install the Nlohmann, follow the instructions in the [official repository.](https://github.com/nlohmann/json)
 
 
 ### Executing the program 
@@ -36,13 +36,13 @@ Before utilizing the Loafr System, ensure that you have the following prerequisi
 
 
 # Example Usage 
-./loafr
-load ../testlogs/2023-11-14-1.txt
-out ../testlogs
-filter sugar-level < 130
-search insulin pump
-sort ascending
-quit
+* ./loafr
+* load ../testlogs/2023-11-14-1.txt
+* out ../testlogs
+* filter sugar-level < 130
+* search insulin pump
+* sort ascending
+* quit
 
 
 ### Unit Test 
