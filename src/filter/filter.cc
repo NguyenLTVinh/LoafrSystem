@@ -11,7 +11,8 @@ std::vector<std::string> Filter::FilterLog(
     const std::vector<std::string>& logEntries, const std::string& logItem,
     const std::string& operation, const int val) {
     std::vector<std::string> matchedEntries;
-
+// Iterates through the logFile and adds all of the entries that contain the
+// 'logItem' keyword and satisfy the operation to 'matchedEntries'
     for (const auto& entry : logEntries) {
         if (entry.find(logItem) != std::string::npos) {
             std::istringstream iss(entry);
