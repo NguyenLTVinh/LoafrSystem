@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 
-Filter::Filter() {}
 
 std::vector<std::string> Filter::FilterLog(
     const std::vector<std::string>& logEntries, const std::string& logItem,
