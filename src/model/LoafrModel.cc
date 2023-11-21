@@ -9,6 +9,7 @@
 LoafrModel::LoafrModel() {
   filter = std::make_unique<Filter>();
   search = std::make_unique<Search>();
+  sort = std::make_unique<Sort>();
 }
 
 void LoafrModel::saveLogEntriesAsJson(
@@ -81,4 +82,14 @@ void LoafrModel::SaveSearchKeyword(const std::string& keyword,
     matchedEntries = search->searchKeyword(keyword, newDataEntry.getData());
   }
   saveLogEntriesAsJson(matchedEntries, path, newDataEntry.getFileName());
+}
+
+void LoafrModel::sortFileByTimestamp(const std::string& sortType,
+                                     const NewDataEntry& newDataEntry,
+                                     const std::string& path) {
+  std::vector<std::string> matchedEntries;
+  if (sort) {
+    sortedEntries = sort->sortFile(sortType, newDataEntry.getData());
+  }
+  saveLogEntriesAsJson(sortedEntries, path, newDataEntry.getFileName());
 }

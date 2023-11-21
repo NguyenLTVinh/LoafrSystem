@@ -3,9 +3,10 @@
 
 #include <memory>
 
-#include "Filter/Filter.h"
+#include "filter/filter.h"
 #include "NewDataEntry/NewDataEntry.h"
-#include "Search/Search.h"
+#include "search/Search.h"
+#include "sort/Sort.h"
 
 class LoafrModel {
  private:
