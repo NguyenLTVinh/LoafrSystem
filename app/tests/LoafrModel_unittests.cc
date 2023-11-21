@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include "LoafrModel.h"
 
 class LoafrModelTest : public ::testing::Test {
 public:
