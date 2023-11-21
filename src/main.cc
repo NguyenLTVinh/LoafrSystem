@@ -46,6 +46,11 @@ int main() {
       << "   - Searches for log entries containing the specified keyword.\n";
   std::cout << "   - Example: search insulin pump\n\n";
 
+  std::cout << "5. Sort keyword\n";
+  std::cout
+      << "   - Sorts for log entries containing based on ascending or descending order.\n";
+
+
   std::cout << "Type 'quit' to exit the program.\n";
   std::cout << "============================\n";
 
@@ -93,7 +98,16 @@ int main() {
           keyword.erase(0, 1);
         }
         model.SaveSearchKeyword(keyword, *logData, outputFolderPath);
-      } else {
+      } else if (command == "sort") {
+        if (loadCalled) {
+          std::string order;
+          iss >> order;
+
+            model.sortFileByTimestamp(sortType, *logData, outputFolderPath);
+    
+        }
+      }
+      else {
         std::cout << "No Log Files Loaded" << std::endl;
       }
     } else {
