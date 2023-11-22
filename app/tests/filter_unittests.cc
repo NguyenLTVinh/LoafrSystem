@@ -39,3 +39,7 @@ TEST_F(FilterTest, FilterLogEqual){
   EXPECT_EQ(output.size(), 1);
 }
 
+TEST_F(FilterTest, NoMatched){
+  std::vector<std::string> output = filter.FilterLog(logEntries, "sugar-level", ">", 600);
+  EXPECT_EQ(output.size(), 0);
+}
