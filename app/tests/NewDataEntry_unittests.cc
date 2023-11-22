@@ -1,8 +1,9 @@
-#include "NewDataEntry.h"
 #include <gtest/gtest.h>
 
+#include "NewDataEntry.h"
+
 class NewDataEntryTest : public ::testing::Test {
-public:
+ public:
   void SetUp() {
     // code here will execute just before the test ensues
     test1 = new NewDataEntry("temp1.txt", "../tests");
@@ -10,7 +11,7 @@ public:
   }
   void TearDown() {}
 
-protected:
+ protected:
   NewDataEntry *test1;
   NewDataEntry *test2;
 };

@@ -1,8 +1,3 @@
-/**
- * @file LoafrModel.h
- * @brief Defines the LoafrModel class for log file processing operations.
- */
-
 #ifndef LOAFRMODEL_H
 #define LOAFRMODEL_H
 

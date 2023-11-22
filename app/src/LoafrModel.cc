@@ -3,9 +3,8 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
-#include <sstream>
-
 #include <nlohmann/json.hpp>
+#include <sstream>
 
 LoafrModel::LoafrModel() {
   filter = std::make_unique<Filter>();

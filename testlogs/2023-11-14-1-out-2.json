@@ -1,0 +1,86 @@
+[
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "104\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T08:30:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "111\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T09:10:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "125\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T09:15:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "127\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T09:25:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "119\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T09:30:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "111\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T10:20:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "104\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T10:40:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "119\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T11:15:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "128\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T11:30:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "114\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T11:50:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "125\r",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T12:20:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "124",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T12:35:00"
+    }
+]
