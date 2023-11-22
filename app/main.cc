@@ -46,11 +46,11 @@ int main() {
       << "   - Searches for log entries containing the specified keyword.\n";
   std::cout << "   - Example: search insulin pump\n\n";
 
-  std::cout << "5. sort method\n";
+  std::cout << "5. sort order\n";
   std::cout
       << "   - Sorts for log entries by time stamps based on ascending or "
          "descending order.\n";
-  std::cout << "   - Supported methods: 'ascending', 'descending'\n";
+  std::cout << "   - Supported orders: 'ascending', 'descending'\n";
   std::cout << "   - Example: sort descending\n\n";
 
   std::cout << "Type 'quit' to exit the program.\n";

@@ -23,8 +23,7 @@ Before utilizing the Loafr System, ensure that you have the following prerequisi
 
 - C++ compiler
 - CMake
-- Nlohmann JSON Library: A C++ library for working with JSON data.
-  - To install the Nlohmann, follow the instructions in the [official repository.](https://github.com/nlohmann/json)
+- Linux or MacOS Operating System
 
 ### Building the Project
 
@@ -55,10 +54,10 @@ These executables run the project, and run the testing suite respectively.
 - out /path/to/outfolder: Sets the path to the output folder where results will be saved.
 - filter fieldname operator value: Filters log entries based on the specified field, operator, and value.
 - search keyword: Searches for log entries containing the specified keyword.
-- sort keyword: Sorts log entries based on ascending or descending order.
+- sort order: Sorts log entries based on ascending or descending order.
 - Type quit to exit the program.
 
-# Example Usage
+### Example Usage
 
 - ./loafr
 - load ../testlogs/2023-11-14-1.txt
@@ -69,3 +68,10 @@ These executables run the project, and run the testing suite respectively.
 - quit
 
 ### Unit Test
+- This project uses Google Test framework for writing and executing unit tests.
+- The unit test suites are in the tests directory.
+- As mentioned above, the loafr_test executable is generated when the project is built with the command:
+```
+mkdir build && cd build && cmake ../ && make && cd ..
+```
+- To run the loafr_test executable, cd into build directory, and run ./loafr_test in the terminal.
