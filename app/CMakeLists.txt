@@ -38,6 +38,11 @@ add_executable(
   tests/NewDataEntry_unittests.cc
   tests/Sort_unittests.cc
   tests/Search_unittests.cc
+  src/LoafrModel.cc
+  src/NewDataEntry.cc
+  src/Search.cc
+  src/Sort.cc
+  src/filter.cc
 )
 target_include_directories(loafr_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
