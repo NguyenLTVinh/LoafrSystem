@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loafrmodel_20',['LoafrModel',['../classLoafrModel.html#ae045969f74791d1875faf71b45336c90',1,'LoafrModel']]]
+  ['filterlog_23',['FilterLog',['../classFilter.html#acadc1d7035e08fbdbf1d14af9269aacb',1,'Filter']]]
 ];
