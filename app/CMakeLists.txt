@@ -49,6 +49,7 @@ target_include_directories(loafr_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 target_link_libraries(
   loafr_test
   GTest::gtest_main
+  nlohmann_json::nlohmann_json
 )
 
 include(GoogleTest)
