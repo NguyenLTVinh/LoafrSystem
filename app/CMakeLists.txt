@@ -34,6 +34,10 @@ enable_testing()
 add_executable(
   loafr_test
   tests/LoafrModel_unittests.cc
+  tests/filter_unittests.cc
+  tests/NewDataEntry_unittests.cc
+  tests/Sort_unittests.cc
+  tests/Search_unittests.cc
 )
 target_include_directories(loafr_test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
