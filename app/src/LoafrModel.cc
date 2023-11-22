@@ -6,12 +6,27 @@
 #include <nlohmann/json.hpp>
 #include <sstream>
 
+/**
+ * @brief Constructs a new LoafrModel object.
+ *
+ * The constructor initializes unique pointers to Filter, Search, and Sort
+ * objects, which are used for filtering, searching, and sorting the log
+ * entries.
+ */
 LoafrModel::LoafrModel() {
   filter = std::make_unique<Filter>();
   search = std::make_unique<Search>();
   sort = std::make_unique<Sort>();
 }
 
+/**
+ * @brief Saves log entries as a JSON file.
+ *
+ * @param logEntries A vector of strings containing log entries to be saved.
+ * @param path The directory path where the JSON file will be saved.
+ * @param baseFileName The base name of the file used to create the output file
+ * name.
+ */
 void LoafrModel::saveLogEntriesAsJson(
     const std::vector<std::string>& logEntries, const std::string& path,
     const std::string& baseFileName) {
@@ -62,6 +77,16 @@ void LoafrModel::saveLogEntriesAsJson(
   }
 }
 
+/**
+ * @brief Filters log entries based on specified criteria and saves the
+ * results as JSON.
+ *
+ * @param newDataEntry The NewDataEntry object containing log entries.
+ * @param logItem The field name to filter on.
+ * @param operation The comparison operation ("<", "=", ">").
+ * @param val The value to compare against.
+ * @param path The directory path where the filtered JSON file will be saved.
+ */
 void LoafrModel::SaveFilterLog(const NewDataEntry& newDataEntry,
                                const std::string& logItem,
                                const std::string& operation, const int val,
@@ -74,6 +99,14 @@ void LoafrModel::SaveFilterLog(const NewDataEntry& newDataEntry,
   saveLogEntriesAsJson(matchedEntries, path, newDataEntry.getFileName());
 }
 
+/**
+ * @brief Searches for a keyword in log entries and saves the results as JSON.
+ *
+ * @param keyword The keyword to search for.
+ * @param newDataEntry The NewDataEntry object containing log entries.
+ * @param path The directory path where the search results JSON file will be
+ * saved.
+ */
 void LoafrModel::SaveSearchKeyword(const std::string& keyword,
                                    const NewDataEntry& newDataEntry,
                                    const std::string& path) {
@@ -84,6 +117,13 @@ void LoafrModel::SaveSearchKeyword(const std::string& keyword,
   saveLogEntriesAsJson(matchedEntries, path, newDataEntry.getFileName());
 }
 
+/**
+ * @brief Sorts log entries by timestamp and saves them as JSON.
+ *
+ * @param sortType The type of sorting ("ascending" or "descending").
+ * @param newDataEntry The NewDataEntry object containing log entries.
+ * @param path The directory path where the sorted JSON file will be saved.
+ */
 void LoafrModel::sortFileByTimestamp(const std::string& sortType,
                                      const NewDataEntry& newDataEntry,
                                      const std::string& path) {
