@@ -1,46 +1,112 @@
 #include <gtest/gtest.h>
 
-#include "Sort.h"
+#include <algorithm>
+#include <nlohmann/json.hpp>
+
+#include "../include/Sort.h"
+#include "LoafrModel.h"
 
 class SortTest : public ::testing::Test {
  protected:
-  Sort sortInstance;
+  // Declare necessary variables
+  Sort sorter; 
+  std::vector<std::string> RandomlogEntries, ascendedlogEntries, descendedlogEntries, ascend, descend;
+
+  void SetUp() override {
+    // Populate the logEntries vector with test data
+    RandomlogEntries = {
+        "2023-11-14T08:35:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 130",
+        "2023-11-14T08:40:00, insulin pump, Start-Infusion, infusion-amount, 6",
+        "2023-11-14T08:45:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 178",
+        "2023-11-14T08:50:00, insulin pump, Start-Infusion, infusion-amount, "
+        "16",
+        "2023-11-14T08:55:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 173",
+        "2023-11-14T09:00:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 200",
+        "2023-11-14T09:05:00, insulin pump, Start-Infusion, infusion-amount, "
+        "18",
+        "2023-11-14T09:10:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 111",
+        "2023-11-14T09:15:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 125",
+        "2023-11-14T08:30:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 104"
+
+    };
+
+    ascendedlogEntries = {
+        "2023-11-14T08:30:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 104",
+        "2023-11-14T08:35:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 130",
+        "2023-11-14T08:40:00, insulin pump, Start-Infusion, infusion-amount, 6",
+        "2023-11-14T08:45:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 178",
+        "2023-11-14T08:50:00, insulin pump, Start-Infusion, infusion-amount, "
+        "16",
+        "2023-11-14T08:55:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 173",
+        "2023-11-14T09:00:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 200",
+        "2023-11-14T09:05:00, insulin pump, Start-Infusion, infusion-amount, "
+        "18",
+        "2023-11-14T09:10:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 111",
+        "2023-11-14T09:15:00, patient simulator, glucose-monitor-report, "
+        "sugar-level, 125"
+
+    };
+
+    descendedlogEntries = {
+      "2023-11-14T09:15:00, patient simulator, glucose-monitor-report, "
+      "sugar-level, 125",
+      "2023-11-14T09:10:00, patient simulator, glucose-monitor-report, "
+      "sugar-level, 111",
+      "2023-11-14T09:05:00, insulin pump, Start-Infusion, infusion-amount, 18",
+      "2023-11-14T09:00:00, patient simulator, glucose-monitor-report, "
+      "sugar-level, 200",
+      "2023-11-14T08:55:00, patient simulator, glucose-monitor-report, "
+      "sugar-level, 173",
+      "2023-11-14T08:50:00, insulin pump, Start-Infusion, infusion-amount, 16",
+      "2023-11-14T08:45:00, patient simulator, glucose-monitor-report, "
+      "sugar-level, 178",
+      "2023-11-14T08:40:00, insulin pump, Start-Infusion, infusion-amount, 6",
+      "2023-11-14T08:35:00, patient simulator, glucose-monitor-report, "
+      "sugar-level, 130",
+      "2023-11-14T08:30:00, patient simulator, glucose-monitor-report, "
+      "sugar-level, 104"
+
+    };
+  }
 };
 
-TEST_F(SortTest, SortAscending) {
-  std::vector<std::string> logEntries = {
-      "2023-01-03,Entry3", "2023-01-01,Entry1", "2023-01-02,Entry2"};
-  auto sortedEntries = sortInstance.sortFile("ascending", logEntries);
+TEST_F(SortTest, AscendingSort) {
+  ascend = sorter.sortFile("ascending", RandomlogEntries);
 
-  std::vector<std::string> expected = {"2023-01-01,Entry1", "2023-01-02,Entry2",
-                                       "2023-01-03,Entry3"};
-
-  ASSERT_EQ(sortedEntries, expected);
+  EXPECT_EQ(ascend, ascendedlogEntries);
 }
 
-TEST_F(SortTest, SortDescending) {
-  std::vector<std::string> logEntries = {
-      "2023-01-01,Entry1", "2023-01-03,Entry3", "2023-01-02,Entry2"};
-  auto sortedEntries = sortInstance.sortFile("descending", logEntries);
+TEST_F(SortTest, DescendingSort) {
+  descend = sorter.sortFile("descending", RandomlogEntries);
 
-  std::vector<std::string> expected = {"2023-01-03,Entry3", "2023-01-02,Entry2",
-                                       "2023-01-01,Entry1"};
-
-  ASSERT_EQ(sortedEntries, expected);
+  EXPECT_EQ(descend, descendedlogEntries);
 }
 
-TEST_F(SortTest, HandleEmptyLogEntries) {
-  std::vector<std::string> logEntries;
-  auto sortedEntries = sortInstance.sortFile("ascending", logEntries);
+TEST_F(SortTest, EmptyLogEntries) {
+  std::vector<std::string> emptyEntries;
+  std::vector<std::string> result = sorter.sortFile("ascending", emptyEntries);
 
-  ASSERT_TRUE(sortedEntries.empty());
+  EXPECT_TRUE(result.empty());
 }
 
 TEST_F(SortTest, InvalidSortType) {
   std::vector<std::string> logEntries = {"2023-01-01,Entry1"};
 
   testing::internal::CaptureStderr();
-  auto sortedEntries = sortInstance.sortFile("invalid", logEntries);
+  std::vector<std::string> sortedEntries = sorter.sortFile("invalid", logEntries);
   std::string output = testing::internal::GetCapturedStderr();
   std::string expected_error = "Error: Invalid sort type";
   EXPECT_NE(output.find(expected_error), std::string::npos);
