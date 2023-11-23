@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['getdata_35',['getData',['../classNewDataEntry.html#a0a985c29e7ffbc3e2b20fe56b0db8f54',1,'NewDataEntry']]],
-  ['getfilename_36',['getFileName',['../classNewDataEntry.html#a9c0b564fffd8866ea96da51dd2e48aa4',1,'NewDataEntry']]],
-  ['getpath_37',['getPath',['../classNewDataEntry.html#a9ef091cb6f01e9992b76938288524e29',1,'NewDataEntry']]]
+  ['getdata_25',['getData',['../classNewDataEntry.html#a0a985c29e7ffbc3e2b20fe56b0db8f54',1,'NewDataEntry']]],
+  ['getfilename_26',['getFileName',['../classNewDataEntry.html#a9c0b564fffd8866ea96da51dd2e48aa4',1,'NewDataEntry']]],
+  ['getpath_27',['getPath',['../classNewDataEntry.html#a9ef091cb6f01e9992b76938288524e29',1,'NewDataEntry']]]
 ];
