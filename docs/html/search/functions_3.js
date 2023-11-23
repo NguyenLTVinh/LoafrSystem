@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eloafrmodel_30',['~LoafrModel',['../classLoafrModel.html#a49cb02efe1349cbbfb33999a70f1258a',1,'LoafrModel']]]
+  ['newdataentry_40',['NewDataEntry',['../classNewDataEntry.html#a3e29779a0070403405d34c8855f33c36',1,'NewDataEntry']]]
 ];

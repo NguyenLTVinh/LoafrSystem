@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['loafrmodel_2',['LoafrModel',['../classLoafrModel.html',1,'LoafrModel'],['../classLoafrModel.html#ae045969f74791d1875faf71b45336c90',1,'LoafrModel::LoafrModel()']]],
-  ['loafrmodel_2eh_3',['LoafrModel.h',['../LoafrModel_8h.html',1,'']]],
-  ['loafrmodeltest_4',['LoafrModelTest',['../classLoafrModelTest.html',1,'']]]
+  ['getdata_3',['getData',['../classNewDataEntry.html#a0a985c29e7ffbc3e2b20fe56b0db8f54',1,'NewDataEntry']]],
+  ['getfilename_4',['getFileName',['../classNewDataEntry.html#a9c0b564fffd8866ea96da51dd2e48aa4',1,'NewDataEntry']]],
+  ['getpath_5',['getPath',['../classNewDataEntry.html#a9ef091cb6f01e9992b76938288524e29',1,'NewDataEntry']]]
 ];

@@ -1,26 +1,107 @@
 \hypertarget{classNewDataEntry}{}\doxysection{New\+Data\+Entry Class Reference}
 \label{classNewDataEntry}\index{NewDataEntry@{NewDataEntry}}
+
+
+Represents a data entry that loads and stores data.  
+
+
+
+
+{\ttfamily \#include $<$New\+Data\+Entry.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classNewDataEntry_a3e29779a0070403405d34c8855f33c36}\label{classNewDataEntry_a3e29779a0070403405d34c8855f33c36}} 
-{\bfseries New\+Data\+Entry} (const std\+::string \&file\+Name, const std\+::string \&path)
-\item 
-\mbox{\Hypertarget{classNewDataEntry_ae44b2ba9e7869141ba25cfc7ca926e89}\label{classNewDataEntry_ae44b2ba9e7869141ba25cfc7ca926e89}} 
-void {\bfseries load\+Data} ()
-\item 
-\mbox{\Hypertarget{classNewDataEntry_a9c0b564fffd8866ea96da51dd2e48aa4}\label{classNewDataEntry_a9c0b564fffd8866ea96da51dd2e48aa4}} 
-const std\+::string \& {\bfseries get\+File\+Name} () const
-\item 
-\mbox{\Hypertarget{classNewDataEntry_a9ef091cb6f01e9992b76938288524e29}\label{classNewDataEntry_a9ef091cb6f01e9992b76938288524e29}} 
-const std\+::string \& {\bfseries get\+Path} () const
-\item 
-\mbox{\Hypertarget{classNewDataEntry_a0a985c29e7ffbc3e2b20fe56b0db8f54}\label{classNewDataEntry_a0a985c29e7ffbc3e2b20fe56b0db8f54}} 
-const std\+::vector$<$ std\+::string $>$ \& {\bfseries get\+Data} () const
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{classNewDataEntry_a3e29779a0070403405d34c8855f33c36}{New\+Data\+Entry}} (const std\+::string \&file\+Name, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} object with the specified file name and path. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNewDataEntry_ae44b2ba9e7869141ba25cfc7ca926e89}{load\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Loads data from the file specified in the constructor. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classNewDataEntry_a9c0b564fffd8866ea96da51dd2e48aa4}{get\+File\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Gets the file name. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classNewDataEntry_a9ef091cb6f01e9992b76938288524e29}{get\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Gets the file path. \end{DoxyCompactList}\item 
+const std\+::vector$<$ std\+::string $>$ \& \mbox{\hyperlink{classNewDataEntry_a0a985c29e7ffbc3e2b20fe56b0db8f54}{get\+Data}} () const
+\begin{DoxyCompactList}\small\item\em Gets the loaded data from the file. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Represents a data entry that loads and stores data. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNewDataEntry_a3e29779a0070403405d34c8855f33c36}\label{classNewDataEntry_a3e29779a0070403405d34c8855f33c36}} 
+\index{NewDataEntry@{NewDataEntry}!NewDataEntry@{NewDataEntry}}
+\index{NewDataEntry@{NewDataEntry}!NewDataEntry@{NewDataEntry}}
+\doxysubsubsection{\texorpdfstring{NewDataEntry()}{NewDataEntry()}}
+{\footnotesize\ttfamily New\+Data\+Entry\+::\+New\+Data\+Entry (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} object with the specified file name and path. 
+
+Constructs a \mbox{\hyperlink{classNewDataEntry}{New\+Data\+Entry}} object with file name and path. It also loads data from the file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & The name of the file. \\
+\hline
+{\em path} & The path to the file. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNewDataEntry_a0a985c29e7ffbc3e2b20fe56b0db8f54}\label{classNewDataEntry_a0a985c29e7ffbc3e2b20fe56b0db8f54}} 
+\index{NewDataEntry@{NewDataEntry}!getData@{getData}}
+\index{getData@{getData}!NewDataEntry@{NewDataEntry}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily const std\+::vector$<$ std\+::string $>$ \& New\+Data\+Entry\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the loaded data from the file. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the vector of loaded data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNewDataEntry_a9c0b564fffd8866ea96da51dd2e48aa4}\label{classNewDataEntry_a9c0b564fffd8866ea96da51dd2e48aa4}} 
+\index{NewDataEntry@{NewDataEntry}!getFileName@{getFileName}}
+\index{getFileName@{getFileName}!NewDataEntry@{NewDataEntry}}
+\doxysubsubsection{\texorpdfstring{getFileName()}{getFileName()}}
+{\footnotesize\ttfamily const std\+::string \& New\+Data\+Entry\+::get\+File\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the file name. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the file name. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNewDataEntry_a9ef091cb6f01e9992b76938288524e29}\label{classNewDataEntry_a9ef091cb6f01e9992b76938288524e29}} 
+\index{NewDataEntry@{NewDataEntry}!getPath@{getPath}}
+\index{getPath@{getPath}!NewDataEntry@{NewDataEntry}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily const std\+::string \& New\+Data\+Entry\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the file path. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to the file path. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classNewDataEntry_ae44b2ba9e7869141ba25cfc7ca926e89}\label{classNewDataEntry_ae44b2ba9e7869141ba25cfc7ca926e89}} 
+\index{NewDataEntry@{NewDataEntry}!loadData@{loadData}}
+\index{loadData@{loadData}!NewDataEntry@{NewDataEntry}}
+\doxysubsubsection{\texorpdfstring{loadData()}{loadData()}}
+{\footnotesize\ttfamily void New\+Data\+Entry\+::load\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads data from the file specified in the constructor. 
+
+Loads data from the file specified in the constructor. Clears the existing data and reads lines from the file. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/app/include/New\+Data\+Entry.\+h\item 
-/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/app/src/New\+Data\+Entry.\+cc\end{DoxyCompactItemize}
+/home/nguy4766/5801/\+Loafr\+System/app/include/New\+Data\+Entry.\+h\item 
+/home/nguy4766/5801/\+Loafr\+System/app/src/New\+Data\+Entry.\+cc\end{DoxyCompactItemize}

@@ -1,14 +1,65 @@
 \hypertarget{classSort}{}\doxysection{Sort Class Reference}
 \label{classSort}\index{Sort@{Sort}}
+
+
+\mbox{\hyperlink{classSort}{Sort}} class provides functionalities to sort the log files. This class sorts log entries based on ascending or descending order of timestamps.  
+
+
+
+
+{\ttfamily \#include $<$Sort.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{classSort_a89ab0e273ec62afb2c1a3b7fc5671503}\label{classSort_a89ab0e273ec62afb2c1a3b7fc5671503}} 
+\mbox{\hyperlink{classSort_a89ab0e273ec62afb2c1a3b7fc5671503}{Sort}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the sort class. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classSort_afebb0a95017aafd01c7c8466c368f781}{sort\+File}} (const std\+::string \&sort\+Type, std\+::vector$<$ std\+::string $>$ \&file\+Contents)
+\begin{DoxyCompactList}\small\item\em Sorts log entries based on the specified sorting type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classSort}{Sort}} class provides functionalities to sort the log files. This class sorts log entries based on ascending or descending order of timestamps. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classSort_afebb0a95017aafd01c7c8466c368f781}\label{classSort_afebb0a95017aafd01c7c8466c368f781}} 
-std\+::vector$<$ std\+::string $>$ {\bfseries sort\+File} (const std\+::string \&sort\+Type, std\+::vector$<$ std\+::string $>$ \&file\+Contents)
-\end{DoxyCompactItemize}
+\index{Sort@{Sort}!sortFile@{sortFile}}
+\index{sortFile@{sortFile}!Sort@{Sort}}
+\doxysubsubsection{\texorpdfstring{sortFile()}{sortFile()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Sort\+::sort\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sort\+Type,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{log\+Entries }\end{DoxyParamCaption})}
+
+
+
+Sorts log entries based on the specified sorting type. 
+
+Sorts the log entries based on a sort type if log entries contain data, otherwise returns empty log entries.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sort\+Type} & The type of sorting (ascending or descending). \\
+\hline
+{\em file\+Contents} & The vector containing the data being sorted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ The sorted log entries.
+\end{DoxyReturn}
+sort\+File method sorts the log entries in either ascending or descending order based on the specified sort type. It uses a lambda function to compare timestamps for sorting.
+
+
+\begin{DoxyParams}{Parameters}
+{\em sort\+Type} & The type of sorting (ascending or descending). \\
+\hline
+{\em file\+Contents} & The vector containing the data being sorted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::string$>$ The sorted log entries. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/app/include/Sort.\+h\item 
-/mnt/c/\+Users/\+Vinh Nguyen/\+Documents/\+C\+S\+C\+I C\+O\+U\+R\+S\+E\+S/5801 Software Engineering/\+Loafr\+System/app/src/Sort.\+cc\end{DoxyCompactItemize}
+/home/nguy4766/5801/\+Loafr\+System/app/include/Sort.\+h\item 
+/home/nguy4766/5801/\+Loafr\+System/app/src/Sort.\+cc\end{DoxyCompactItemize}

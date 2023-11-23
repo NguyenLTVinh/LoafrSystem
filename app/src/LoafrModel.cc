@@ -47,6 +47,7 @@ void LoafrModel::saveLogEntriesAsJson(
     trim(eventType);
     trim(dataFieldName);
     trim(dataValue);
+    if (!dataValue.empty() && dataValue[dataValue.size() - 1] == '\r') {dataValue.erase(dataValue.size() - 1);}
 
     nlohmann::json jsonObj = {{"Timestamp", timestamp},
                               {"Component Name", componentName},
