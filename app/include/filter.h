@@ -11,6 +11,7 @@
  * well as an integer to compare against the integers in the inputted logfiles.
  * Only the logEntries that contain both the keyword and satisfy the operation
  * will be returned.
+ * Traceability: This class is traced to Section 3.3.10: Filter Class on the Design Document
  */
 class Filter {
  public:
