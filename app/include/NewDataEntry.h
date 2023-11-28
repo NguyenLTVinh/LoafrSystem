@@ -6,6 +6,7 @@
 
 /**
  * @brief Represents a data entry that loads and stores data.
+ * This traces to section 3.3.6 Class: NewDataEntry of the Detailed Design Document.
  */
 class NewDataEntry {
  private:

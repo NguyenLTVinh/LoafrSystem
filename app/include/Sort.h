@@ -8,6 +8,7 @@
  * @brief Sort class provides functionalities to sort the log files.
  * This class sorts log entries based on ascending or descending order of
  * timestamps.
+ * This traces to section 3.3.8 Class: Sort of the Detailed Design Document.
  */
 class Sort {
  private:

@@ -16,6 +16,7 @@
  *
  * The Search class offers a method to filter log entries based on the presence
  * of a specified keyword, returning all entries that contain this keyword.
+ * This traces to section 3.3.9 Class: Search of the Design Document.
  */
 class Search {
  public:

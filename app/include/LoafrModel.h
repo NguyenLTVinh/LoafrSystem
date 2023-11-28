@@ -15,6 +15,7 @@
  *
  * This class uses unique pointers to manage Filter, Search, and Sort objects,
  * providing a unified interface for processing log file entries.
+ * This traces to section 3.3.2 Class: LoafrModel of the Design Document.
  */
 class LoafrModel {
  private:
