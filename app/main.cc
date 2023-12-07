@@ -100,7 +100,7 @@ int main() {
         std::cout << "No Log Files Loaded\n" << std::endl;
       }
 
-    } else if (command == "advanced") {
+    } else if (command == "advanced_filter") {
       if (loadCalled) {
         std::string startName, endName;
         iss >> startName >> endName;

@@ -61,6 +61,9 @@ Filter::FilterByStartEndEvents(const std::vector<std::string> &logEntries,
     while (std::getline(iss, item, ',')) {
       entryItems.push_back(item);
     }
+    if (entryItems.size() == 0) {
+      continue;
+    }
     std::string trimmedStartEventName =
         std::regex_replace(StartEventName, std::regex(R"(\s*(.*?)\s*)"), "$1");
     std::string trimmedEndEventName =
@@ -75,11 +78,11 @@ Filter::FilterByStartEndEvents(const std::vector<std::string> &logEntries,
         std::cerr << "Error: Start event value not -1" << std::endl;
         return std::vector<std::vector<std::string>>(); // Return empty vector
       }
-      if (isGrouping) {
-        // Handle previous group if it was not closed
-        groupedEntries.push_back(currentGroup);
-        currentGroup.clear();
-      }
+      // if (isGrouping) {
+      //   // Handle previous group if it was not closed
+      //   groupedEntries.push_back(currentGroup);
+      //   currentGroup.clear();
+      // }
       isGrouping = true;
       currentGroup.push_back(entry);
     } else if (isGrouping && trimmedEntryItem == trimmedEndEventName) {
