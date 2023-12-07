@@ -1,17 +1,19 @@
 #include "filter.h"
 
 #include <iostream>
+#include <regex>
 #include <sstream>
 #include <string>
 #include <vector>
 
-std::vector<std::string> Filter::FilterLog(
-    const std::vector<std::string>& logEntries, const std::string& logItem,
-    const std::string& operation, const int val) {
+std::vector<std::string>
+Filter::FilterLog(const std::vector<std::string> &logEntries,
+                  const std::string &logItem, const std::string &operation,
+                  const int val) {
   std::vector<std::string> matchedEntries;
   // Iterates through the logFile and adds all of the entries that contain the
   // 'logItem' keyword and satisfy the operation to 'matchedEntries'
-  for (const auto& entry : logEntries) {
+  for (const auto &entry : logEntries) {
     if (entry.find(logItem) != std::string::npos) {
       std::istringstream iss(entry);
       std::vector<std::string> entryItems;
@@ -29,7 +31,7 @@ std::vector<std::string> Filter::FilterLog(
               (operation == ">" && logItemValue > val)) {
             matchedEntries.push_back(entry);
           }
-        } catch (const std::invalid_argument&) {
+        } catch (const std::invalid_argument &) {
           std::cerr << "Invalid value for comparison in the last column of the "
                        "entry.\n";
         }
@@ -44,26 +46,34 @@ std::vector<std::string> Filter::FilterLog(
   return matchedEntries;
 }
 
-std::vector<std::vector<std::string>> Filter::FilterByStartEndEvents(
-    const std::vector<std::string>& logEntries,
-    const std::string& StartEventName, const std::string& EndEventName) {
+std::vector<std::vector<std::string>>
+Filter::FilterByStartEndEvents(const std::vector<std::string> &logEntries,
+                               const std::string &StartEventName,
+                               const std::string &EndEventName) {
   std::vector<std::vector<std::string>> groupedEntries;
   std::vector<std::string> currentGroup;
   bool isGrouping = false;
 
-  for (const auto& entry : logEntries) {
+  for (const auto &entry : logEntries) {
     std::istringstream iss(entry);
     std::vector<std::string> entryItems;
     std::string item;
     while (std::getline(iss, item, ',')) {
       entryItems.push_back(item);
     }
-
+    std::string trimmedStartEventName =
+        std::regex_replace(StartEventName, std::regex(R"(\s*(.*?)\s*)"), "$1");
+    std::string trimmedEndEventName =
+        std::regex_replace(EndEventName, std::regex(R"(\s*(.*?)\s*)"), "$1");
+    std::string trimmedEntryItem =
+        std::regex_replace(entryItems[2], std::regex(R"(\s*(.*?)\s*)"), "$1");
+    std::string trimmedValue =
+        std::regex_replace(entryItems[4], std::regex(R"(\s*(.*?)\s*)"), "$1");
     // Check for start event
-    if (entryItems[2] == StartEventName) {
-      if (entryItems[4] != "-1") {
+    if (trimmedEntryItem == trimmedStartEventName) {
+      if (trimmedValue != "-1") {
         std::cerr << "Error: Start event value not -1" << std::endl;
-        return std::vector<std::vector<std::string>>();  // Return empty vector
+        return std::vector<std::vector<std::string>>(); // Return empty vector
       }
       if (isGrouping) {
         // Handle previous group if it was not closed
@@ -72,10 +82,10 @@ std::vector<std::vector<std::string>> Filter::FilterByStartEndEvents(
       }
       isGrouping = true;
       currentGroup.push_back(entry);
-    } else if (isGrouping && entryItems[2] == EndEventName) {
-      if (entryItems[4] != "-1") {
+    } else if (isGrouping && trimmedEntryItem == trimmedEndEventName) {
+      if (trimmedValue != "-1") {
         std::cerr << "Error: End event value not -1" << std::endl;
-        return std::vector<std::vector<std::string>>();  // Return empty vector
+        return std::vector<std::vector<std::string>>(); // Return empty vector
       }
       currentGroup.push_back(entry);
       groupedEntries.push_back(currentGroup);
@@ -90,6 +100,5 @@ std::vector<std::vector<std::string>> Filter::FilterByStartEndEvents(
     // Handle last group if it was not closed
     groupedEntries.push_back(currentGroup);
   }
-
   return groupedEntries;
 }

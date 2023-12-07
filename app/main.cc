@@ -20,7 +20,7 @@ int main() {
   LoafrModel model;
   std::unique_ptr<NewDataEntry> logData;
   std::string outputFolderPath =
-      "./";  // Default output folder is current folder
+      "./"; // Default output folder is current folder
   bool loadCalled = false;
 
   std::cout << "Loafr Command Line Interface\n";
@@ -100,6 +100,17 @@ int main() {
         std::cout << "No Log Files Loaded\n" << std::endl;
       }
 
+    } else if (command == "advanced") {
+      if (loadCalled) {
+        std::string startName, endName;
+        iss >> startName >> endName;
+        try {
+          model.saveFilterByStartEndEventsToLog(*logData, startName, endName,
+                                                outputFolderPath);
+        } catch (std::invalid_argument) {
+          std::cout << "Wrong input bozo" << std::endl;
+        }
+      }
     } else if (command == "search") {
       if (loadCalled) {
         std::string keyword;

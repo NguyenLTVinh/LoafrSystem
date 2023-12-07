@@ -35,3 +35,5 @@
 *.cmake
 CMakeCache.txt
 CMakeFiles
+compile_commands.json
+.cache*

@@ -4,7 +4,6 @@
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
-#include <sstream>
 
 /**
  * @brief Constructs a new LoafrModel object.
@@ -28,11 +27,11 @@ LoafrModel::LoafrModel() {
  * name.
  */
 void LoafrModel::saveLogEntriesAsJson(
-    const std::vector<std::string>& logEntries, const std::string& path,
-    const std::string& baseFileName) {
+    const std::vector<std::string> &logEntries, const std::string &path,
+    const std::string &baseFileName) {
   nlohmann::json jsonArray;
 
-  for (const auto& entry : logEntries) {
+  for (const auto &entry : logEntries) {
     std::istringstream iss(entry);
     std::string timestamp, componentName, eventType, dataFieldName, dataValue;
 
@@ -42,12 +41,14 @@ void LoafrModel::saveLogEntriesAsJson(
     getline(iss, dataFieldName, ',');
     getline(iss, dataValue, ',');
 
-    auto trim = [](std::string& s) { s.erase(0, s.find_first_not_of(" ")); };
+    auto trim = [](std::string &s) { s.erase(0, s.find_first_not_of(" ")); };
     trim(componentName);
     trim(eventType);
     trim(dataFieldName);
     trim(dataValue);
-    if (!dataValue.empty() && dataValue[dataValue.size() - 1] == '\r') {dataValue.erase(dataValue.size() - 1);}
+    if (!dataValue.empty() && dataValue[dataValue.size() - 1] == '\r') {
+      dataValue.erase(dataValue.size() - 1);
+    }
 
     nlohmann::json jsonObj = {{"Timestamp", timestamp},
                               {"Component Name", componentName},
@@ -88,16 +89,39 @@ void LoafrModel::saveLogEntriesAsJson(
  * @param val The value to compare against.
  * @param path The directory path where the filtered JSON file will be saved.
  */
-void LoafrModel::SaveFilterLog(const NewDataEntry& newDataEntry,
-                               const std::string& logItem,
-                               const std::string& operation, const int val,
-                               const std::string& path) {
+void LoafrModel::SaveFilterLog(const NewDataEntry &newDataEntry,
+                               const std::string &logItem,
+                               const std::string &operation, const int val,
+                               const std::string &path) {
   std::vector<std::string> matchedEntries;
   if (filter) {
     matchedEntries =
         filter->FilterLog(newDataEntry.getData(), logItem, operation, val);
   }
   saveLogEntriesAsJson(matchedEntries, path, newDataEntry.getFileName());
+}
+
+/**
+ * @brief Filters log entries bases on start and end event times and
+ * saves the results as JSON
+ *
+ * @param newDataEntry The NewDataEntry object containing log entries.
+ * @param StartEventName the name of the starting event
+ * @param EndEventName the name of the ending event
+ *
+ */
+void LoafrModel::saveFilterByStartEndEventsToLog(
+    const NewDataEntry &newDataEntry, const std::string &StartEventName,
+    const std::string &EndEventName, const std::string &path) {
+
+  std::vector<std::vector<std::string>> matchedEntries;
+  if (filter) {
+    matchedEntries = filter->FilterByStartEndEvents(
+        newDataEntry.getData(), StartEventName, EndEventName);
+  }
+  for (std::vector<std::string> &line : matchedEntries) {
+    saveLogEntriesAsJson(line, path, newDataEntry.getFileName());
+  }
 }
 
 /**
@@ -108,9 +132,9 @@ void LoafrModel::SaveFilterLog(const NewDataEntry& newDataEntry,
  * @param path The directory path where the search results JSON file will be
  * saved.
  */
-void LoafrModel::SaveSearchKeyword(const std::string& keyword,
-                                   const NewDataEntry& newDataEntry,
-                                   const std::string& path) {
+void LoafrModel::SaveSearchKeyword(const std::string &keyword,
+                                   const NewDataEntry &newDataEntry,
+                                   const std::string &path) {
   std::vector<std::string> matchedEntries;
   if (search) {
     matchedEntries = search->searchKeyword(keyword, newDataEntry.getData());
@@ -125,9 +149,9 @@ void LoafrModel::SaveSearchKeyword(const std::string& keyword,
  * @param newDataEntry The NewDataEntry object containing log entries.
  * @param path The directory path where the sorted JSON file will be saved.
  */
-void LoafrModel::sortFileByTimestamp(const std::string& sortType,
-                                     const NewDataEntry& newDataEntry,
-                                     const std::string& path) {
+void LoafrModel::sortFileByTimestamp(const std::string &sortType,
+                                     const NewDataEntry &newDataEntry,
+                                     const std::string &path) {
   std::vector<std::string> matchedEntries = newDataEntry.getData();
   if (sort) {
     matchedEntries = sort->sortFile(sortType, matchedEntries);
