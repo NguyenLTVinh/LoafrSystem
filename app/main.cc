@@ -35,18 +35,22 @@ int main() {
                "saved.\n";
   std::cout << "   - Example: out results/\n\n";
 
-  std::cout << "3. filter fieldname operator value\n";
+  std::cout << "3. filter-value fieldname operator value\n";
   std::cout << "   - Filters log entries based on the specified field, "
                "operator, and value.\n";
   std::cout << "   - Supported operators: '=', '>', '<'\n";
   std::cout << "   - Example: filter sugar-level > 130\n\n";
 
-  std::cout << "4. search keyword\n";
+  std::cout << "4. filter-event start_event end_event\n";
+  std::cout << "   - Filters log entries between start and end events.\n";
+  std::cout << "   - Example: filter event StartEvent EndEvent\n\n";
+
+  std::cout << "5. search keyword\n";
   std::cout
       << "   - Searches for log entries containing the specified keyword.\n";
   std::cout << "   - Example: search insulin pump\n\n";
 
-  std::cout << "5. sort order\n";
+  std::cout << "6. sort order\n";
   std::cout
       << "   - Sorts for log entries by time stamps based on ascending or "
          "descending order.\n";
@@ -81,7 +85,7 @@ int main() {
       outputFolderPath = path;
       std::cout << "Output Folder Path Set To: " << outputFolderPath
                 << std::endl;
-    } else if (command == "filter") {
+    } else if (command == "filter-value") {
       if (loadCalled) {
         std::string field, compare, valueStr;
         int value;
@@ -100,7 +104,7 @@ int main() {
         std::cout << "No Log Files Loaded\n" << std::endl;
       }
 
-    } else if (command == "advanced_filter") {
+    } else if (command == "filter-event") {
       if (loadCalled) {
         std::string startName, endName;
         iss >> startName >> endName;
@@ -108,7 +112,7 @@ int main() {
           model.saveFilterByStartEndEventsToLog(*logData, startName, endName,
                                                 outputFolderPath);
         } catch (std::invalid_argument) {
-          std::cout << "Wrong input bozo" << std::endl;
+          std::cout << "Wrong inputs" << std::endl;
         }
       }
     } else if (command == "search") {

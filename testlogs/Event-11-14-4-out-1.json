@@ -1,0 +1,51 @@
+[
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "-1",
+        "Event Type": "glucose-monitor-report-start",
+        "Timestamp": "2023-11-14T12:10:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "142",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T12:10:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "131",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T12:15:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "125",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T12:20:00"
+    },
+    {
+        "Component Name": "insulin pump",
+        "Data Field Name": "infusion-amount",
+        "Data Value": "18",
+        "Event Type": "Start-Infusion",
+        "Timestamp": "2023-11-14T12:25:00"
+    },
+    {
+        "Component Name": "insulin pump",
+        "Data Field Name": "infusion-amount",
+        "Data Value": "8",
+        "Event Type": "Start-Infusion",
+        "Timestamp": "2023-11-14T12:30:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "-1",
+        "Event Type": "glucose-monitor-report-end",
+        "Timestamp": "2023-11-14T12:10:00"
+    }
+]
