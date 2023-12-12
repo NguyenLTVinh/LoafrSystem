@@ -124,6 +124,31 @@ void LoafrModel::saveFilterByStartEndEventsToLog(
   }
 }
 
+void LoafrModel::saveAdvancedFilter(const NewDataEntry &newDataEntry,
+                                   const std::string &StartEventName,
+                                   const std::string &EndEventName,
+                                   const std::string &logItem,
+                                   const std::string &operation, 
+                                   const int val,
+                                   const std::string &path) {
+    // Step 1: Call FilterByStartEndEvents
+    auto groupedEntries = filter->FilterByStartEndEvents(newDataEntry.getData(), StartEventName, EndEventName);
+
+    // Step 2: For each group, call FilterLog and store the results
+    std::vector<std::vector<std::string>> filteredGroups;
+    for (auto &group : groupedEntries) {
+        auto filteredGroup = filter->FilterLog(group, logItem, operation, val);
+        if (!filteredGroup.empty()) {
+            filteredGroups.push_back(filteredGroup);
+        }
+    }
+
+    // Step 3: Save each filtered group to JSON
+    for (const auto &group : filteredGroups) {
+        saveLogEntriesAsJson(group, path, newDataEntry.getFileName());
+    }
+}
+
 /**
  * @brief Searches for a keyword in log entries and saves the results as JSON.
  *

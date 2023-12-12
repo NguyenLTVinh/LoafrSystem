@@ -1,0 +1,16 @@
+[
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "142",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T12:10:00"
+    },
+    {
+        "Component Name": "patient simulator",
+        "Data Field Name": "sugar-level",
+        "Data Value": "131",
+        "Event Type": "glucose-monitor-report",
+        "Timestamp": "2023-11-14T12:15:00"
+    }
+]

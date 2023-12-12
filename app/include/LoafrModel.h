@@ -17,7 +17,8 @@
  * providing a unified interface for processing log file entries.
  * This traces to section 3.3.2 Class: LoafrModel of the Design Document.
  */
-class LoafrModel {
+class LoafrModel
+{
 private:
   std::unique_ptr<Filter> filter; ///< Unique pointer to a Filter object.
   std::unique_ptr<Search> search; ///< Unique pointer to a Search object.
@@ -73,6 +74,14 @@ public:
                                        const std::string &StartEventName,
                                        const std::string &EndEventName,
                                        const std::string &path);
+
+  void saveAdvancedFilter(const NewDataEntry &newDataEntry,
+                                      const std::string &StartEventName,
+                                      const std::string &EndEventName,
+                                      const std::string &logItem,
+                                      const std::string &operation,
+                                      const int val,
+                                      const std::string &path);
 
   /**
    * @brief Searches for a keyword in log entries and saves the results as JSON.
