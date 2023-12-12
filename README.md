@@ -98,3 +98,6 @@ mkdir build && cd build && cmake ../ && make && cd ..
 ### Doxygen Documentation
 - This project ultilizes Doxygen for documentations.
 - To view the project's documentations, open LoafrSystem/docs/html/index.html
+
+### Backlog
+- Both the product backlog and the scrum backlog can be accessed in the Projects tab.
