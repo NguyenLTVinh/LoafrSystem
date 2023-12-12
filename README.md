@@ -55,9 +55,11 @@ These executables run the project, and run the testing suite respectively.
 
 - load /path/to/file: Loads the log file specified in the path.
 - out /path/to/outfolder: Sets the path to the output folder where results will be saved.
-- filter fieldname operator value: Filters log entries based on the specified field, operator, and value.
+- filter-value fieldname operator value: Filters log entries based on the specified field, operator, and value.
+- filter-event start_event end_event
 - search keyword: Searches for log entries containing the specified keyword.
 - sort order: Sorts log entries based on ascending or descending order.
+- advance-filter start_event end_event fieldname operator value
 - Type quit to exit the program.
 
 ### Example Usage
@@ -65,9 +67,11 @@ These executables run the project, and run the testing suite respectively.
 - ./loafr
 - load ../testlogs/2023-11-14-1.txt
 - out ../testlogs
-- filter sugar-level < 130
+- filter-value sugar-level < 130
+- filter-event glucose-monitor-report-start glucose-monitor-report-end
 - search insulin pump
 - sort ascending
+- advance-filter glucose-monitor-report-start glucose-monitor-report-end sugar-level < 130
 - quit
 
 ### Example Inputs and Outputs
