@@ -56,10 +56,10 @@ These executables run the project, and run the testing suite respectively.
 - load /path/to/file: Loads the log file specified in the path.
 - out /path/to/outfolder: Sets the path to the output folder where results will be saved.
 - filter-value fieldname operator value: Filters log entries based on the specified field, operator, and value.
-- filter-event start_event end_event
+- filter-event start_event end_event: Filter log entries between the start and end events.
 - search keyword: Searches for log entries containing the specified keyword.
 - sort order: Sorts log entries based on ascending or descending order.
-- advance-filter start_event end_event fieldname operator value
+- advance-filter start_event end_event fieldname operator value: Filter all entries between a start and end event and filter remaining entries based on specified field, operator, and value.
 - Type quit to exit the program.
 
 ### Example Usage
