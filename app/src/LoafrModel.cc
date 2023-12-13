@@ -113,7 +113,6 @@ void LoafrModel::SaveFilterLog(const NewDataEntry &newDataEntry,
 void LoafrModel::saveFilterByStartEndEventsToLog(
     const NewDataEntry &newDataEntry, const std::string &StartEventName,
     const std::string &EndEventName, const std::string &path) {
-
   std::vector<std::vector<std::string>> matchedEntries;
   if (filter) {
     matchedEntries = filter->FilterByStartEndEvents(
@@ -124,29 +123,49 @@ void LoafrModel::saveFilterByStartEndEventsToLog(
   }
 }
 
+/**
+ * @brief Applies an advanced filter to log entries based on start and end
+ * events, and additional criteria, saving the filtered results as separate JSON
+ * files.
+ *
+ * @param newDataEntry The NewDataEntry object containing log entries.
+ * @param StartEventName The name of the starting event for grouping log
+ * entries.
+ * @param EndEventName The name of the ending event for grouping log entries.
+ * @param logItem The field name to filter on within each group.
+ * @param operation The comparison operation ("<", "=", ">") for the logItem
+ * values.
+ * @param val The value to compare against for filtering logItem values.
+ * @param path The directory path where the filtered JSON files will be saved.
+ *
+ * Groups log entries based on start and end events and then filters within each
+ * group based on additional criteria, saving the resulting groups as individual
+ * JSON files in the specified path.
+ */
+
 void LoafrModel::saveAdvancedFilter(const NewDataEntry &newDataEntry,
-                                   const std::string &StartEventName,
-                                   const std::string &EndEventName,
-                                   const std::string &logItem,
-                                   const std::string &operation, 
-                                   const int val,
-                                   const std::string &path) {
-    // Step 1: Call FilterByStartEndEvents
-    auto groupedEntries = filter->FilterByStartEndEvents(newDataEntry.getData(), StartEventName, EndEventName);
+                                    const std::string &StartEventName,
+                                    const std::string &EndEventName,
+                                    const std::string &logItem,
+                                    const std::string &operation, const int val,
+                                    const std::string &path) {
+  // Step 1: Call FilterByStartEndEvents
+  auto groupedEntries = filter->FilterByStartEndEvents(
+      newDataEntry.getData(), StartEventName, EndEventName);
 
-    // Step 2: For each group, call FilterLog and store the results
-    std::vector<std::vector<std::string>> filteredGroups;
-    for (auto &group : groupedEntries) {
-        auto filteredGroup = filter->FilterLog(group, logItem, operation, val);
-        if (!filteredGroup.empty()) {
-            filteredGroups.push_back(filteredGroup);
-        }
+  // Step 2: For each group, call FilterLog and store the results
+  std::vector<std::vector<std::string>> filteredGroups;
+  for (auto &group : groupedEntries) {
+    auto filteredGroup = filter->FilterLog(group, logItem, operation, val);
+    if (!filteredGroup.empty()) {
+      filteredGroups.push_back(filteredGroup);
     }
+  }
 
-    // Step 3: Save each filtered group to JSON
-    for (const auto &group : filteredGroups) {
-        saveLogEntriesAsJson(group, path, newDataEntry.getFileName());
-    }
+  // Step 3: Save each filtered group to JSON
+  for (const auto &group : filteredGroups) {
+    saveLogEntriesAsJson(group, path, newDataEntry.getFileName());
+  }
 }
 
 /**
