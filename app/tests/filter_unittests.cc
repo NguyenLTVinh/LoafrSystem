@@ -65,17 +65,6 @@ TEST_F(FilterTest, NoMatched) {
   EXPECT_EQ(output.size(), 0);
 }
 
-// Advanced filter ///
-
-// TEST_F(FilterTest, NoMatchingEvents) {
-//   std::vector<std::vector<std::string>> output =
-//   filter.FilterByStartEndEvents(
-//       advancedLogEntries, "invalid-start", "invalid-end-event");
-
-//   std::vector<std::vector<std::string>> expected;
-//   EXPECT_EQ(output, expected);
-// }
-
 TEST_F(FilterTest, NoStartEvent) {
   std::vector<std::vector<std::string>> output = filter.FilterByStartEndEvents(
       advancedLogEntries, "NonexistentStartEvent", "glucose-monitor-report");
