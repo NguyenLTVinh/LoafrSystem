@@ -5,27 +5,22 @@
 #include "LoafrModel.h"
 
 void splitPath(const std::string &fullPath, std::string &dirPath,
-               std::string &fileName)
-{
+               std::string &fileName) {
   size_t pos = fullPath.find_last_of("/\\");
-  if (pos != std::string::npos)
-  {
+  if (pos != std::string::npos) {
     dirPath = fullPath.substr(0, pos);
     fileName = fullPath.substr(pos + 1);
-  }
-  else
-  {
+  } else {
     dirPath = ".";
     fileName = fullPath;
   }
 }
 
-int main()
-{
+int main() {
   LoafrModel model;
   std::unique_ptr<NewDataEntry> logData;
   std::string outputFolderPath =
-      "./"; // Default output folder is current folder
+      "./";  // Default output folder is current folder
   bool loadCalled = false;
 
   std::cout << "Loafr Command Line Interface\n";
@@ -62,21 +57,23 @@ int main()
   std::cout << "   - Supported orders: 'ascending', 'descending'\n";
   std::cout << "   - Example: sort descending\n\n";
 
-  std::cout << "7. advance-filter start_event end_event fieldname operator value\n";
-  std::cout << "   - Advanced filtering: First filters log entries between start and end events, then filters these entries based on the specified field, operator, and value.\n";
-  std::cout << "   - Example: advance-filter StartEvent EndEvent sugar-level > 130\n\n";
+  std::cout
+      << "7. advance-filter start_event end_event fieldname operator value\n";
+  std::cout << "   - Advanced filtering: First filters log entries between "
+               "start and end events, then filters these entries based on the "
+               "specified field, operator, and value.\n";
+  std::cout << "   - Example: advance-filter StartEvent EndEvent sugar-level > "
+               "130\n\n";
 
   std::cout << "Type 'quit' to exit the program.\n";
   std::cout << "============================\n";
 
   std::string line;
-  while (true)
-  {
+  while (true) {
     std::cout << "% ";
     std::getline(std::cin, line);
 
-    if (line == "quit")
-    {
+    if (line == "quit") {
       break;
     }
 
@@ -84,129 +81,88 @@ int main()
     std::string command;
     iss >> command;
     // TODO: make changes to accomodate loading just a path.
-    if (command == "load")
-    {
+    if (command == "load") {
       std::string logFilePath, path, fileName;
       iss >> logFilePath;
       splitPath(logFilePath, path, fileName);
       logData = std::make_unique<NewDataEntry>(fileName, path);
       loadCalled = true;
-    }
-    else if (command == "out")
-    {
+    } else if (command == "out") {
       std::string path;
       iss >> path;
       outputFolderPath = path;
       std::cout << "Output Folder Path Set To: " << outputFolderPath
                 << std::endl;
-    }
-    else if (command == "filter-value")
-    {
-      if (loadCalled)
-      {
+    } else if (command == "filter-value") {
+      if (loadCalled) {
         std::string field, compare, valueStr;
         int value;
         iss >> field >> compare >> valueStr;
-        try
-        {
+        try {
           value = std::stoi(valueStr);
           model.SaveFilterLog(*logData, field, compare, value,
                               outputFolderPath);
-        }
-        catch (std::invalid_argument)
-        {
+        } catch (std::invalid_argument) {
           std::cout << "Error Invalid Argument: Make sure to pass in a opeator "
                        "and a number to filter "
                        "by, otherwise use search"
                     << std::endl;
         }
+      } else {
+        std::cout << "No Log Files Loaded\n" << std::endl;
       }
-      else
-      {
-        std::cout << "No Log Files Loaded\n"
-                  << std::endl;
-      }
-    }
-    else if (command == "filter-event")
-    {
-      if (loadCalled)
-      {
+    } else if (command == "filter-event") {
+      if (loadCalled) {
         std::string startName, endName;
         iss >> startName >> endName;
-        try
-        {
+        try {
           model.saveFilterByStartEndEventsToLog(*logData, startName, endName,
                                                 outputFolderPath);
-        }
-        catch (std::invalid_argument)
-        {
+        } catch (std::invalid_argument) {
           std::cout << "Wrong inputs" << std::endl;
         }
       }
-    }
-    else if (command == "advance-filter")
-    {
-      if (loadCalled)
-      {
+    } else if (command == "advance-filter") {
+      if (loadCalled) {
         std::string startEvent, endEvent, field, operatorStr, valueStr;
         int value;
         iss >> startEvent >> endEvent >> field >> operatorStr >> valueStr;
-        try
-        {
+        try {
           value = std::stoi(valueStr);
-          model.saveAdvancedFilter(*logData, startEvent, endEvent, field, operatorStr, value, outputFolderPath);
+          model.saveAdvancedFilter(*logData, startEvent, endEvent, field,
+                                   operatorStr, value, outputFolderPath);
+        } catch (std::invalid_argument) {
+          std::cerr << "Error: Invalid argument for value. Please ensure it's "
+                       "a number.\n";
         }
-        catch (std::invalid_argument)
-        {
-          std::cerr << "Error: Invalid argument for value. Please ensure it's a number.\n";
-        }
-      }
-      else
-      {
+      } else {
         std::cerr << "No Log Files Loaded\n";
       }
-    }
-    else if (command == "search")
-    {
-      if (loadCalled)
-      {
+    } else if (command == "search") {
+      if (loadCalled) {
         std::string keyword;
         std::getline(iss, keyword);
-        if (!keyword.empty() && keyword.front() == ' ')
-        {
+        if (!keyword.empty() && keyword.front() == ' ') {
           keyword.erase(0, 1);
         }
         model.SaveSearchKeyword(keyword, *logData, outputFolderPath);
+      } else {
+        std::cout << "No Log Files Loaded\n" << std::endl;
       }
-      else
-      {
-        std::cout << "No Log Files Loaded\n"
-                  << std::endl;
-      }
-    }
-    else if (command == "sort")
-    {
-      if (loadCalled)
-      {
+    } else if (command == "sort") {
+      if (loadCalled) {
         std::string sortOrder;
         iss >> sortOrder;
-        if (sortOrder == "ascending" || sortOrder == "descending")
-        {
+        if (sortOrder == "ascending" || sortOrder == "descending") {
           model.sortFileByTimestamp(sortOrder, *logData, outputFolderPath);
-        }
-        else
-        {
+        } else {
           std::cerr << "Invalid sort order. Please use 'ascending' or "
                        "'descending'.\n";
         }
-      }
-      else
-      {
+      } else {
         std::cerr << "No Log Files Loaded\n";
       }
-    }
-    else
-    {
+    } else {
       std::cerr << "Invalid command or insufficient arguments.\n";
     }
   }
