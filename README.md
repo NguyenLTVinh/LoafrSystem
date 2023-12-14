@@ -4,6 +4,9 @@
 
 This document provides instructions on building, executing, and testing the Loafr system, version 0.1. The Loafr system is designed to read log files, execute analyses, and produce output based on user-defined search, sort, and filter criteria.
 
+Product Review Video:
+https://www.youtube.com/watch?v=KXF6XXcvoF0
+
 ## Table of Contents
 
 1. Getting Started
